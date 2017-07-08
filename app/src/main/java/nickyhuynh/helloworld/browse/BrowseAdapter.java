@@ -1,6 +1,8 @@
 package nickyhuynh.helloworld.browse;
 
 import android.support.v7.widget.CardView;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +12,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import nickyhuynh.helloworld.R;
+import nickyhuynh.helloworld.app.Application;
 
 /**
  * Created by bummy on 7/8/17.
@@ -26,9 +29,7 @@ public class BrowseAdapter extends RecyclerView.Adapter<BrowseAdapter.ViewHolder
         LINEAR_LAYOUT_MANAGER
     }
 
-    protected LayoutManagerType currentLayoutManagerType;
-    protected RecyclerView recyclerView;
-    protected BrowseAdapter browseAdapter;
+    protected LayoutManagerType currentLayoutManagerType = LayoutManagerType.LINEAR_LAYOUT_MANAGER;
     protected RecyclerView.LayoutManager layoutManager;
 
     private ArrayList<String> dataSet;
@@ -36,6 +37,8 @@ public class BrowseAdapter extends RecyclerView.Adapter<BrowseAdapter.ViewHolder
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView companyName;
         public RecyclerView recyclerView;
+
+        public VideoPagerAdapter videoPagerAdapter;
 
         public CardView cardView;
 
@@ -66,6 +69,17 @@ public class BrowseAdapter extends RecyclerView.Adapter<BrowseAdapter.ViewHolder
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.companyName.setText(dataSet.get(position));
+
+        ArrayList<String> test = new ArrayList<>();
+        test.add("Asdfasdf");
+        test.add("zcvzxcv");
+
+        holder.videoPagerAdapter = new VideoPagerAdapter(test);
+
+        currentLayoutManagerType = LayoutManagerType.LINEAR_LAYOUT_MANAGER;
+
+        setRecyclerViewLayoutManager(currentLayoutManagerType, holder.recyclerView);
+        holder.recyclerView.setAdapter(holder.videoPagerAdapter);
     }
 
     @Override
@@ -86,4 +100,30 @@ public class BrowseAdapter extends RecyclerView.Adapter<BrowseAdapter.ViewHolder
         return dataSet.get(position);
     }
 
+    public void setRecyclerViewLayoutManager(LayoutManagerType layoutManagerType, RecyclerView recyclerView) {
+        int scrollPosition = 0;
+
+        // If a layout manager has already been set, get current scroll position.
+        if (recyclerView.getLayoutManager() != null) {
+            scrollPosition = ((LinearLayoutManager) recyclerView.getLayoutManager())
+                    .findFirstCompletelyVisibleItemPosition();
+        }
+
+        switch (layoutManagerType) {
+            case GRID_LAYOUT_MANAGER:
+                layoutManager = new GridLayoutManager(Application.getInstance(), SPAN_COUNT);
+                currentLayoutManagerType = LayoutManagerType.GRID_LAYOUT_MANAGER;
+                break;
+            case LINEAR_LAYOUT_MANAGER:
+                layoutManager = new LinearLayoutManager(Application.getInstance(), LinearLayoutManager.HORIZONTAL, false);
+                currentLayoutManagerType = LayoutManagerType.LINEAR_LAYOUT_MANAGER;
+                break;
+            default:
+                layoutManager = new LinearLayoutManager(Application.getInstance(), LinearLayoutManager.HORIZONTAL, false);
+                currentLayoutManagerType = LayoutManagerType.LINEAR_LAYOUT_MANAGER;
+        }
+
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.scrollToPosition(scrollPosition);
+    }
 }

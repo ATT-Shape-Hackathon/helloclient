@@ -38,7 +38,7 @@ public class VideoPagerAdapter extends RecyclerView.Adapter<VideoPagerAdapter.Vi
 
     @Override
     public VideoPagerAdapter.ViewHolder onCreateViewHolder(final ViewGroup parent, int viewType) {
-        CardView v = (CardView) LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview_company, parent, false);
+        CardView v = (CardView) LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview_video, parent, false);
         final ViewHolder vh = new ViewHolder(v);
 
         return vh;
@@ -51,12 +51,12 @@ public class VideoPagerAdapter extends RecyclerView.Adapter<VideoPagerAdapter.Vi
 
     @Override
     public int getItemCount() {
-        return dataSet.size() + 1;
+        return dataSet.size()+5;
     }
 
     @Override
     public int getItemViewType(int position) {
-        return R.layout.cardview_company;
+        return R.layout.cardview_video;
     }
 
     public void setDataSet(ArrayList<String> videos) {
