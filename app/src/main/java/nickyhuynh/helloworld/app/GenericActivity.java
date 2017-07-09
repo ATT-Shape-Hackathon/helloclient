@@ -6,6 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 
 import nickyhuynh.helloworld.message.SendMessageActivity;
 import nickyhuynh.helloworld.message.ShowMessageActivity;
+import nickyhuynh.helloworld.profile.HelpActivity;
+import nickyhuynh.helloworld.profile.RevenueActivity;
+import nickyhuynh.helloworld.profile.SettingsActivity;
 
 /**
  * Created by bummy on 7/8/17.
@@ -29,6 +32,24 @@ public class GenericActivity extends AppCompatActivity {
         Intent intent = new Intent();
         intent.putExtra("DESTINATION", destination);
         intent.setClass(this, SendMessageActivity.class);
+        startActivity(intent);
+    }
+
+    public void navigateToRevenue() {
+        Intent intent = new Intent();
+        intent.setClass(this, RevenueActivity.class);
+        startActivity(intent);
+    }
+
+    public void navigateToSettings() {
+        Intent intent = new Intent();
+        intent.setClass(this, SettingsActivity.class);
+        startActivity(intent);
+    }
+
+    public void navigateToHelp() {
+        Intent intent = new Intent();
+        intent.setClass(this, HelpActivity.class);
         startActivity(intent);
     }
 }

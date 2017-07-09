@@ -27,6 +27,9 @@
 
         <activity android:name=".message.SendMessageActivity"/>
         <activity android:name=".message.ShowMessageActivity"/>
+        <activity android:name=".profile.RevenueActivity"/>
+        <activity android:name=".profile.SettingsActivity"/>
+        <activity android:name=".profile.HelpActivity"/>
     </application>
 
 </manifest>

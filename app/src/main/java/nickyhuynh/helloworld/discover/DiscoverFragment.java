@@ -20,7 +20,7 @@ import nickyhuynh.helloworld.R;
 public class DiscoverFragment extends Fragment {
     private static final String TAG = "DiscoverFragment";
     private static final String KEY_LAYOUT_MANAGER = "layoutManager";
-    private static final int SPAN_COUNT = 5;
+    private static final int SPAN_COUNT = 4;
 
     private enum LayoutManagerType {
         GRID_LAYOUT_MANAGER,
@@ -54,8 +54,6 @@ public class DiscoverFragment extends Fragment {
 
     private void assignVariables(Bundle savedInstanceState) {
         ArrayList<String> test = new ArrayList<>();
-        test.add("Asdfasdf");
-        test.add("zcvzxcv");
 
         discoverAdapter = new DiscoverAdapter(test);
 
