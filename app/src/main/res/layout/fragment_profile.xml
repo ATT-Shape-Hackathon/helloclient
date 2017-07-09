@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/nav_header"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <TextView
+            android:text="Profile"
+            android:fontFamily="sans-serif-light"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:layout_centerInParent="true"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_below="@id/nav_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@drawable/default_background">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#FFF"
+                android:alpha="0.5"/>
+
+            <nickyhuynh.helloworld.app.CircularImageView
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_centerInParent="true"/>
+
+        </RelativeLayout>
+
+        <TextView
+            android:text="Revenue"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:fontFamily="sans-serif-light"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@drawable/bottom_border"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            />
+
+        <TextView
+            android:text="Settings"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:fontFamily="sans-serif-light"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@drawable/bottom_border"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            />
+
+        <TextView
+            android:text="Help"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:fontFamily="sans-serif-light"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@drawable/bottom_border"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            />
+    </LinearLayout>
+
+    <View
+        android:layout_below="@id/nav_header"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@drawable/upper_border_shadow"/>
+
+</RelativeLayout>

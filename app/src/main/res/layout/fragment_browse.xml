@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/main_layout"
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true">
 
     <AutoCompleteTextView
         android:id="@+id/search"
@@ -10,23 +14,21 @@
         android:textColorHint="#80000000"
         android:fontFamily="sans-serif-light"
         android:gravity="center"
-        android:background="#FFF"/>
+        android:background="@android:color/transparent"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_below="@id/search"
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent"/>
 
     <View
         android:id="@+id/border"
         android:layout_below="@id/search"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="5dp"
         android:layout_marginBottom="5dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:background="@drawable/bottom_border"/>
-
-    <android.support.v7.widget.RecyclerView
-        android:layout_below="@id/border"
-        android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@android:color/transparent"/>
+        android:background="@drawable/upper_border_shadow"/>
 
 </RelativeLayout>

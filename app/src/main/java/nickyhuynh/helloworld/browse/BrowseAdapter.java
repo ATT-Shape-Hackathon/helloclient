@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -47,6 +48,7 @@ public class BrowseAdapter extends RecyclerView.Adapter<BrowseAdapter.ViewHolder
             cardView = v;
             companyName = (TextView) v.findViewById(R.id.company_name);
             recyclerView = (RecyclerView) v.findViewById(R.id.recyclerView);
+
         }
 
         public ViewHolder(View v) {
@@ -68,11 +70,9 @@ public class BrowseAdapter extends RecyclerView.Adapter<BrowseAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        holder.companyName.setText(dataSet.get(position));
+//        holder.companyName.setText(dataSet.get(position));
 
         ArrayList<String> test = new ArrayList<>();
-        test.add("Asdfasdf");
-        test.add("zcvzxcv");
 
         holder.videoPagerAdapter = new VideoPagerAdapter(test);
 
@@ -84,7 +84,7 @@ public class BrowseAdapter extends RecyclerView.Adapter<BrowseAdapter.ViewHolder
 
     @Override
     public int getItemCount() {
-        return dataSet.size();
+        return dataSet.size()+12;
     }
 
     @Override

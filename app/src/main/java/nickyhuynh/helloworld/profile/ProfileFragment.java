@@ -20,8 +20,24 @@ public class ProfileFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_dummy, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_profile, container, false);
+
+        assignViews(rootView);
+        assignVariables(savedInstanceState);
+        assignHandlers();
 
         return rootView;
+    }
+
+    private void assignViews(View rootView) {
+
+    }
+
+    private void assignVariables(Bundle savedInstanceState) {
+
+    }
+
+    private void assignHandlers() {
+
     }
 }

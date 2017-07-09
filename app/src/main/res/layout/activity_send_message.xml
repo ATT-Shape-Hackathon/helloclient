@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/nav_header"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <TextView
+            android:text="Send Message"
+            android:fontFamily="sans-serif-light"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:layout_centerInParent="true"/>
+
+        <RelativeLayout
+            android:id="@+id/cancel"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentLeft="true">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/cancel"
+                android:layout_centerInParent="true"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/confirm"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentRight="true">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/checked"
+                android:layout_centerInParent="true"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/destination"
+        android:layout_below="@id/nav_header"
+        android:layout_width="match_parent"
+        android:hint="To?"
+        android:fontFamily="sans-serif-light"
+        android:textSize="14sp"
+        android:layout_height="50dp"
+        android:background="@android:color/transparent"
+        android:paddingLeft="15dp"/>
+
+    <View
+        android:layout_below="@id/destination"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_height="0.5dp"
+        android:background="@drawable/bottom_border"/>
+
+    <EditText
+        android:id="@+id/message"
+        android:hint="Enter your message here."
+        android:layout_below="@id/destination"
+        android:fontFamily="sans-serif-light"
+        android:textSize="14sp"
+        android:minHeight="50dp"
+        android:padding="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"/>
+
+    <View
+        android:id="@+id/safety"
+        android:layout_below="@id/destination"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <View
+        android:layout_below="@id/nav_header"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@drawable/upper_border_shadow"/>
+
+</RelativeLayout>

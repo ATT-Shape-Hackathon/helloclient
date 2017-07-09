@@ -50,14 +50,14 @@ public class BrowseFragment extends Fragment {
 
     private void assignViews(View rootView) {
         recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerView);
+
+        //to remove focus from edittext
+        rootView.findViewById(R.id.main_layout).requestFocus();
     }
 
     private void assignVariables(Bundle savedInstanceState) {
-        ArrayList<String> test = new ArrayList<>();
-        test.add("Asdfasdf");
-        test.add("zcvzxcv");
 
-        browseAdapter = new BrowseAdapter(test);
+        browseAdapter = new BrowseAdapter(new ArrayList<String>());
 
         layoutManager = new LinearLayoutManager(getActivity());
         currentLayoutManagerType = LayoutManagerType.LINEAR_LAYOUT_MANAGER;
