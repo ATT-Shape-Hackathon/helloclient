@@ -2,6 +2,7 @@ package nickyhuynh.helloworld.record;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.ImageFormat;
 import android.graphics.SurfaceTexture;
@@ -31,7 +32,11 @@ import android.view.Surface;
 import android.view.TextureView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
@@ -45,6 +50,8 @@ import java.util.Arrays;
 import java.util.List;
 
 import nickyhuynh.helloworld.R;
+import nickyhuynh.helloworld.app.Application;
+import nickyhuynh.helloworld.app.GenericActivity;
 
 import static android.content.ContentValues.TAG;
 
@@ -54,6 +61,9 @@ import static android.content.ContentValues.TAG;
 
 public class RecordFragment extends Fragment {
 
+    private AutoCompleteTextView company;
+    private EditText username;
+    private TextView record;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -72,14 +82,28 @@ public class RecordFragment extends Fragment {
     }
 
     private void assignViews(View rootView) {
+        company = (AutoCompleteTextView) rootView.findViewById(R.id.company_name);
+        username = (EditText) rootView.findViewById(R.id.username);
+        record = (TextView) rootView.findViewById(R.id.record);
 
+        rootView.findViewById(R.id.main_layout).requestFocus();
     }
 
     private void assignVariables(Bundle savedInstanceState) {
-
+        SharedPreferences prefs = Application.getInstance().getSharedPreferences("SHARED_PREFS", Context.MODE_PRIVATE);
+        username.setHint(String.format("Post as? (Default: %s)", prefs.getString("USERNAME", "Nicky Huynh")));
     }
 
     private void assignHandlers() {
-
+        record.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(company.getText().toString().compareTo("") == 0) {
+                    Toast.makeText(getActivity(), "Company cannot be blank!", Toast.LENGTH_SHORT).show();
+                } else {
+                    ((GenericActivity) getActivity()).navigateToRecord();
+                }
+            }
+        });
     }
 }

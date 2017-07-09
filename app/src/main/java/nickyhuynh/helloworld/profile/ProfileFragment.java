@@ -1,13 +1,20 @@
 package nickyhuynh.helloworld.profile;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import nickyhuynh.helloworld.R;
+import nickyhuynh.helloworld.app.Application;
+import nickyhuynh.helloworld.app.CircularImageView;
 import nickyhuynh.helloworld.main.MainActivity;
 
 /**
@@ -15,6 +22,9 @@ import nickyhuynh.helloworld.main.MainActivity;
  */
 
 public class ProfileFragment extends Fragment {
+
+    private ImageView profileImage;
+    private TextView username;
 
     private TextView revenue;
     private TextView settings;
@@ -37,13 +47,18 @@ public class ProfileFragment extends Fragment {
     }
 
     private void assignViews(View rootView) {
+        profileImage = (CircularImageView) rootView.findViewById(R.id.profile_image);
+        username = (TextView) rootView.findViewById(R.id.profile_name);
+        SharedPreferences prefs = Application.getInstance().getSharedPreferences("SHARED_PREFS", Context.MODE_PRIVATE);
+        username.setText(prefs.getString("USERNAME", "Nicky Huynh"));
+
         revenue = (TextView) rootView.findViewById(R.id.revenue);
         settings = (TextView) rootView.findViewById(R.id.settings);
         help = (TextView) rootView.findViewById(R.id.help);
     }
 
     private void assignVariables(Bundle savedInstanceState) {
-
+        Picasso.with(Application.getInstance()).load(R.drawable.image).into(profileImage);
     }
 
     private void assignHandlers() {

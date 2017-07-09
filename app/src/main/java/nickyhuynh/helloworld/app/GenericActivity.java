@@ -9,6 +9,8 @@ import nickyhuynh.helloworld.message.ShowMessageActivity;
 import nickyhuynh.helloworld.profile.HelpActivity;
 import nickyhuynh.helloworld.profile.RevenueActivity;
 import nickyhuynh.helloworld.profile.SettingsActivity;
+import nickyhuynh.helloworld.record.CameraActivity;
+import nickyhuynh.helloworld.stream.StreamActivity;
 
 /**
  * Created by bummy on 7/8/17.
@@ -50,6 +52,18 @@ public class GenericActivity extends AppCompatActivity {
     public void navigateToHelp() {
         Intent intent = new Intent();
         intent.setClass(this, HelpActivity.class);
+        startActivity(intent);
+    }
+
+    public void navigateToStream() {
+        Intent intent = new Intent();
+        intent.setClass(this, StreamActivity.class);
+        startActivity(intent);
+    }
+
+    public void navigateToRecord() {
+        Intent intent = new Intent();
+        intent.setClass(this, CameraActivity.class);
         startActivity(intent);
     }
 }

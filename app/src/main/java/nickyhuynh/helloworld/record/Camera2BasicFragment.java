@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package nickyhuynh.helloworld.dummy;
+package nickyhuynh.helloworld.record;
 
 import android.Manifest;
 import android.app.Activity;

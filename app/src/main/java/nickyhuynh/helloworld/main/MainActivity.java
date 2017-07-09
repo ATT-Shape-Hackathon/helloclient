@@ -9,7 +9,6 @@ import nickyhuynh.helloworld.app.GenericActivity;
 import nickyhuynh.helloworld.app.SlidingTabLayout;
 import nickyhuynh.helloworld.browse.BrowseFragment;
 import nickyhuynh.helloworld.discover.DiscoverFragment;
-import nickyhuynh.helloworld.dummy.Camera2BasicFragment;
 import nickyhuynh.helloworld.message.MessageFragment;
 import nickyhuynh.helloworld.profile.ProfileFragment;
 import nickyhuynh.helloworld.record.RecordFragment;
@@ -47,7 +46,7 @@ public class MainActivity extends GenericActivity {
         fragments = new Fragment[5];
         fragments[0] = new BrowseFragment();
         fragments[1] = new DiscoverFragment();
-        fragments[2] = new MessageFragment();
+        fragments[2] = new RecordFragment();
         fragments[3] = new MessageFragment();
         fragments[4] = new ProfileFragment();
 
