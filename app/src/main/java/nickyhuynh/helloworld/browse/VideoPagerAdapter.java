@@ -8,10 +8,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
 import nickyhuynh.helloworld.R;
+import nickyhuynh.helloworld.app.Application;
 import nickyhuynh.helloworld.app.GenericActivity;
+import nickyhuynh.helloworld.dtos.CompaniesDTO;
 
 /**
  * Created by bummy on 7/8/17.
@@ -20,7 +24,7 @@ import nickyhuynh.helloworld.app.GenericActivity;
 public class VideoPagerAdapter extends RecyclerView.Adapter<VideoPagerAdapter.ViewHolder> {
     private final String TAG = "VideoPagerAdapter";
 
-    private ArrayList<String> dataSet;
+    private ArrayList<CompaniesDTO.Ad> dataSet;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public CardView cardView;
@@ -39,7 +43,7 @@ public class VideoPagerAdapter extends RecyclerView.Adapter<VideoPagerAdapter.Vi
         }
     }
 
-    public VideoPagerAdapter(ArrayList<String> dataSet) {
+    public VideoPagerAdapter(ArrayList<CompaniesDTO.Ad> dataSet) {
         this.dataSet = dataSet;
     }
 
@@ -54,7 +58,7 @@ public class VideoPagerAdapter extends RecyclerView.Adapter<VideoPagerAdapter.Vi
                 Log.d(TAG, "asdfsadfsdf");
 
                 if(vh.getLayoutPosition() != 0) {
-                    ((GenericActivity) parent.getContext()).navigateToStream();
+                    ((GenericActivity) parent.getContext()).navigateToStream(dataSet.get(vh.getLayoutPosition()-1));
                 } else {
                     ((GenericActivity) parent.getContext()).navigateToRecord();
                 }
@@ -66,18 +70,22 @@ public class VideoPagerAdapter extends RecyclerView.Adapter<VideoPagerAdapter.Vi
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
+
         if(position == 0) {
             holder.thumbnail.setVisibility(View.GONE);
             holder.add.setVisibility(View.VISIBLE);
         } else {
             holder.thumbnail.setVisibility(View.VISIBLE);
             holder.add.setVisibility(View.GONE);
+
+            CompaniesDTO.Ad ad = dataSet.get(position-1);
+            Picasso.with(Application.getInstance()).load(ad.thumbnail).fit().centerCrop().into(holder.thumbnail);
         }
     }
 
     @Override
     public int getItemCount() {
-        return dataSet.size()+10;
+        return dataSet.size()+1;
     }
 
     @Override
@@ -85,11 +93,11 @@ public class VideoPagerAdapter extends RecyclerView.Adapter<VideoPagerAdapter.Vi
         return R.layout.cardview_video;
     }
 
-    public void setDataSet(ArrayList<String> videos) {
+    public void setDataSet(ArrayList<CompaniesDTO.Ad> videos) {
         this.dataSet = videos;
     }
 
-    public String getItem(int position) {
+    public CompaniesDTO.Ad getItem(int position) {
         return dataSet.get(position);
     }
 

@@ -14,6 +14,8 @@ import java.util.ArrayList;
 
 import nickyhuynh.helloworld.R;
 import nickyhuynh.helloworld.app.Application;
+import nickyhuynh.helloworld.dtos.CompaniesDTO;
+import nickyhuynh.helloworld.managers.FeedManager;
 
 /**
  * Created by bummy on 7/8/17.
@@ -34,6 +36,7 @@ public class BrowseAdapter extends RecyclerView.Adapter<BrowseAdapter.ViewHolder
     protected RecyclerView.LayoutManager layoutManager;
 
     private ArrayList<String> dataSet;
+    private CompaniesDTO companiesDTO;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView companyName;
@@ -70,11 +73,9 @@ public class BrowseAdapter extends RecyclerView.Adapter<BrowseAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-//        holder.companyName.setText(dataSet.get(position));
+        holder.companyName.setText(dataSet.get(position));
 
-        ArrayList<String> test = new ArrayList<>();
-
-        holder.videoPagerAdapter = new VideoPagerAdapter(test);
+        holder.videoPagerAdapter = new VideoPagerAdapter(companiesDTO.companies.get(dataSet.get(position)));
 
         currentLayoutManagerType = LayoutManagerType.LINEAR_LAYOUT_MANAGER;
 
@@ -84,7 +85,7 @@ public class BrowseAdapter extends RecyclerView.Adapter<BrowseAdapter.ViewHolder
 
     @Override
     public int getItemCount() {
-        return dataSet.size()+12;
+        return dataSet.size();
     }
 
     @Override
@@ -92,8 +93,9 @@ public class BrowseAdapter extends RecyclerView.Adapter<BrowseAdapter.ViewHolder
         return R.layout.cardview_company;
     }
 
-    public void setDataSet(ArrayList<String> companies) {
+    public void setDataSet(ArrayList<String> companies, CompaniesDTO companiesDTO) {
         this.dataSet = companies;
+        this.companiesDTO = companiesDTO;
     }
 
     public String getItem(int position) {

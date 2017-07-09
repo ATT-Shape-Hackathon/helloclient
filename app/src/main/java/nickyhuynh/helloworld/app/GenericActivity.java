@@ -3,7 +3,14 @@ package nickyhuynh.helloworld.app;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Window;
+import android.view.WindowManager;
 
+import com.google.gson.Gson;
+
+import java.io.Serializable;
+
+import nickyhuynh.helloworld.dtos.CompaniesDTO;
 import nickyhuynh.helloworld.message.SendMessageActivity;
 import nickyhuynh.helloworld.message.ShowMessageActivity;
 import nickyhuynh.helloworld.profile.HelpActivity;
@@ -55,8 +62,9 @@ public class GenericActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void navigateToStream() {
+    public void navigateToStream(CompaniesDTO.Ad ad) {
         Intent intent = new Intent();
+        intent.putExtra("AD", new Gson().toJson(ad));
         intent.setClass(this, StreamActivity.class);
         startActivity(intent);
     }

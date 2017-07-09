@@ -9,9 +9,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.android.volley.VolleyError;
+
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
 import nickyhuynh.helloworld.R;
+import nickyhuynh.helloworld.dtos.CompaniesDTO;
+import nickyhuynh.helloworld.managers.FeedManager;
 
 /**
  * Created by bummy on 7/8/17.
@@ -53,9 +59,20 @@ public class DiscoverFragment extends Fragment {
     }
 
     private void assignVariables(Bundle savedInstanceState) {
-        ArrayList<String> test = new ArrayList<>();
+        FeedManager.INSTANCE.getDiscoveries(new FeedManager.ContentListener() {
+            @Override
+            public void success(JSONObject response) {
+                discoverAdapter.setDataSet(FeedManager.INSTANCE.getDiscoverDTO().discoveries);
+                discoverAdapter.notifyDataSetChanged();
+            }
 
-        discoverAdapter = new DiscoverAdapter(test);
+            @Override
+            public void failed(VolleyError error) {
+
+            }
+        });
+
+        discoverAdapter = new DiscoverAdapter(new ArrayList<CompaniesDTO.Ad>());
 
         layoutManager = new GridLayoutManager(getActivity(), SPAN_COUNT);
         currentLayoutManagerType = LayoutManagerType.GRID_LAYOUT_MANAGER;

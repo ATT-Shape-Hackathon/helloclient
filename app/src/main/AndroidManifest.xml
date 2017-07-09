@@ -33,6 +33,7 @@
         <activity android:name=".profile.HelpActivity"/>
         <activity android:name=".stream.StreamActivity"/>
         <activity android:name=".record.CameraActivity"/>
+
     </application>
 
 </manifest>
