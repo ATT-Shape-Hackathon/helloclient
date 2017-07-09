@@ -1,6 +1,8 @@
 package nickyhuynh.helloworld.profile;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.RelativeLayout;
 
 import nickyhuynh.helloworld.R;
 import nickyhuynh.helloworld.app.GenericActivity;
@@ -10,6 +12,9 @@ import nickyhuynh.helloworld.app.GenericActivity;
  */
 
 public class HelpActivity extends GenericActivity {
+
+    private RelativeLayout cancel;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,7 +26,7 @@ public class HelpActivity extends GenericActivity {
     }
 
     private void assignViews() {
-
+        cancel = (RelativeLayout) findViewById(R.id.cancel);
     }
 
     private void assignVariables(Bundle savedInstanceState) {
@@ -29,6 +34,11 @@ public class HelpActivity extends GenericActivity {
     }
 
     private void assignHandlers() {
-
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 }

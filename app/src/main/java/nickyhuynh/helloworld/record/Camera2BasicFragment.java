@@ -43,6 +43,7 @@ import android.hardware.camera2.TotalCaptureResult;
 import android.hardware.camera2.params.StreamConfigurationMap;
 import android.media.Image;
 import android.media.ImageReader;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
@@ -199,7 +200,17 @@ public class Camera2BasicFragment extends android.support.v4.app.Fragment
 
         @Override
         public void onDisconnected(@NonNull CameraDevice cameraDevice) {
-            mCameraOpenCloseLock.release();
+            new AsyncTask() {
+
+                @Override
+                protected Object doInBackground(Object... params) {
+                    mCameraOpenCloseLock.release();
+
+                    return null;
+                };
+            }.execute();
+
+
             cameraDevice.close();
             mCameraDevice = null;
         }

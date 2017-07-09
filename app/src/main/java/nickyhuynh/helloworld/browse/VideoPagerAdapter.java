@@ -52,8 +52,12 @@ public class VideoPagerAdapter extends RecyclerView.Adapter<VideoPagerAdapter.Vi
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "asdfsadfsdf");
-                ((GenericActivity) parent.getContext()).navigateToStream();
 
+                if(vh.getLayoutPosition() != 0) {
+                    ((GenericActivity) parent.getContext()).navigateToStream();
+                } else {
+                    ((GenericActivity) parent.getContext()).navigateToRecord();
+                }
             }
         });
 

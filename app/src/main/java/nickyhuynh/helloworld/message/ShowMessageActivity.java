@@ -57,6 +57,7 @@ public class ShowMessageActivity extends GenericActivity {
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                finish();
                 navigateToMessageSend(getIntent().getStringExtra("SENDER"));
             }
         });
